@@ -37,11 +37,13 @@ h1 a {
 }
 
 h2 {
-    font-size: 3.125rem 0;
+    font-size: 3.125rem;
+    margin-bottom: 1.5rem;
 }
 
 p {
     margin-bottom: 1.5rem;
+    max-width: 70ch;
 }
 
 /* --- Header --- */
@@ -50,6 +52,25 @@ header {
     background-color: var(--navy);
 }
 
+header nav {
+    position: absolute;
+    left: 0;
+    top: 88px;
+    width: 100vw;
+    background-color: var(--navy);
+    padding: 0 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.7s ease;
+}
+
+ul.menu a>svg {
+    display: none;
+}
+
+.toggle-nav {
+    max-height: 28.125rem;
+}
 
 .toggle-btn {
     background-color: var(--navy);
@@ -68,8 +89,8 @@ header {
     display: block;
 }
 
-header nav {
-    flex: 1 0 100%;
+.toggle-btn:hover {
+    cursor: pointer;
 }
 
 ul.menu {
@@ -120,4 +141,95 @@ ul.utility-nav a {
 
 section {
     padding: 3.125rem 0;
+}
+
+@media screen and (min-width: 950px) {
+    .toggle-btn {
+        display: none;
+    }
+
+    header nav {
+        max-height: 28rem;
+        position: static;
+        width: auto;
+        padding: 0;
+        display: flex;
+        gap: 3rem;
+        overflow: visible;
+        align-items: center;
+    }
+
+    ul.menu a>svg {
+        display: inline;
+        width: 20px;
+    }
+
+    ul.menu a {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+
+    .menu {
+        display: flex;
+        gap: 1.5rem;
+        border: none;
+    }
+
+    ul.menu li:hover>ul.submenu {
+        visibility: visible;
+        opacity: 1;
+        transition: all 0.5s ease;
+    }
+
+    ul.menu li:focus-within>ul,
+    ul.menu li>ul:focus {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    ul.menu {
+        border-bottom: none;
+    }
+
+    ul.menu,
+    ul.utility-nav {
+        margin-bottom: 0;
+    }
+
+    ul.menu li {
+        position: relative;
+    }
+
+    .submenu {
+        position: absolute;
+        background-color: var(--navy);
+        border-radius: 8px;
+        top: 35px;
+        white-space: nowrap;
+        width: 100%;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    ul.submenu a {
+        margin-left: 0;
+        padding: 0.5rem 1rem;
+    }
+
+    .gallery {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .gallery img {
+        width: 50%;
+    }
+
+    .gallery img:last-of-type {
+        position: relative;
+        top: 100px;
+        right: 150px;
+    }
 }
